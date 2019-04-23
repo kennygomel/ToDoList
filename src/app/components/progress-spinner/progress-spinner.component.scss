@@ -1,0 +1,12 @@
+.loading-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 64px);
+  min-height: 200px;
+
+  .mat-progress-spinner {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+  }
+}

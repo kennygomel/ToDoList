@@ -1,0 +1,22 @@
+<div class="sidenav">
+  <div *ngIf="auth.authState; else showNotAuthorized">
+    <div class="sidenav-header">
+      <img [src]="auth.authState.photoURL" alt="{{auth.authState.displayName}}" class="sidenav-header-avatar"/>
+      <div class="sidenav-header-text">
+        <span class="mat-headline">{{auth.authState.displayName}}</span><br>
+        <span class="mat-subheading-1">{{auth.authState.email}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list class="no-padding">
+      <mat-list-item>
+        <button (click)="auth.signOut()" color="warn" mat-button>Logout</button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <ng-template #showNotAuthorized>
+    <div class="text-center">
+      <app-social-login></app-social-login>
+    </div>
+  </ng-template>
+</div>

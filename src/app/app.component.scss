@@ -1,0 +1,24 @@
+.drawer {
+  &-container {
+    height: 100%;
+  }
+}
+
+.mat-toolbar {
+  .app-title {
+    margin: 0 16px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.mat-progress-bar {
+  margin-bottom: -4px;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+}

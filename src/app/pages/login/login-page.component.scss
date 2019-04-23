@@ -1,0 +1,16 @@
+.login-container {
+  margin: 32px auto 0;
+  width: 460px;
+  max-width: 80vw;
+}
+
+.mat-list {
+  &-item {
+    text-align: center;
+
+    .mat-raised-button {
+      display: block;
+      width: 100%;
+    }
+  }
+}

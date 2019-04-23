@@ -1,0 +1,23 @@
+.sidenav {
+  padding: 16px;
+  width: 320px;
+  max-width: 80vw;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+
+    &-avatar {
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    &-text {
+      margin: 4px 16px;
+    }
+  }
+}

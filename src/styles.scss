@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~material-design-icons/iconfont/material-icons.css';
+
+html, body {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+
+  &.round {
+    border-radius: 50%;
+  }
+}
+
+.text {
+  &-justify {
+    text-align: justify;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-last {
+    &-justify {
+      text-align-last: justify;
+    }
+
+    &-left {
+      text-align-last: left;
+    }
+
+    &-center {
+      text-align-last: center;
+    }
+
+    &-right {
+      text-align-last: right;
+    }
+  }
+}
+
+.mat-list {
+  &.no-padding {
+    .mat-list-item {
+      .mat-list-item-content {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.dialog-wrapper {
+  width: 80vw;
+  max-width: 320px;
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-dialog-content {
+    padding-bottom: 32px;
+  }
+
+  .mat-dialog-actions {
+    padding-bottom: 32px;
+  }
+}

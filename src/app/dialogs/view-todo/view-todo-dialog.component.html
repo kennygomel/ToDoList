@@ -1,0 +1,32 @@
+<div class="dialog-wrapper">
+  <h1 mat-dialog-title>{{ todo.title }}</h1>
+  <div mat-dialog-content>
+    <p class="mat-body"><strong>Date:</strong> {{ formatDate(todo.date.toDate()) }}</p>
+    <p class="mat-body"><strong>Done:</strong> {{ todo.done ? 'Yes' : 'No' }}</p>
+    <p class="mat-body"><strong>Description:</strong><br>{{ todo.description }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      (click)="editTodo(todo)"
+      color="primary"
+      mat-dialog-close
+      mat-raised-button
+    >
+      Edit
+    </button>
+    <button
+      (click)="deleteTodo(todo)"
+      color="warn"
+      mat-dialog-close
+      mat-raised-button
+    >
+      Delete
+    </button>
+    <button
+      mat-dialog-close
+      mat-raised-button
+    >
+      Close
+    </button>
+  </div>
+</div>

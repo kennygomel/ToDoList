@@ -1,0 +1,19 @@
+<mat-drawer-container class="drawer drawer-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="over">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button (click)="drawer.toggle()" mat-icon-button>
+        <i class="material-icons">menu</i>
+      </button>
+      <span class="app-title">ToDo List</span>
+      <span class="spacer"></span>
+      <button (click)="editTodo()" mat-icon-button>
+        <i class="material-icons">add</i>
+      </button>
+    </mat-toolbar>
+    <mat-progress-bar [class.active]="progress.active" color="warn" mode="indeterminate"></mat-progress-bar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

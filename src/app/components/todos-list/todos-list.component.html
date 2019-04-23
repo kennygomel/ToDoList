@@ -1,0 +1,97 @@
+<mat-card class="todos-card">
+  <mat-card-header>
+    <mat-card-title>Your todos:</mat-card-title>
+    <mat-button-toggle-group
+      (change)="todoService.loadTodos(todoType)"
+      [(ngModel)]="todoType"
+      appearance="legacy"
+      name="todoType"
+    >
+      <mat-button-toggle value="all">All</mat-button-toggle>
+      <mat-button-toggle value="active">Active</mat-button-toggle>
+      <mat-button-toggle value="done">Done</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="todos !== null; else loadingTodos">
+      <mat-list *ngIf="objectKeys(todos).length; else noTodos">
+        <ng-container *ngFor="let item of todos | keyvalue">
+          <mat-list-item
+            [class.today]="today === item.key"
+            class="todo-date"
+          >
+            <strong
+              [matBadgeHidden]="today !== item.key"
+              [matBadgeOverlap]="false"
+              class="date"
+              matBadge="Today"
+              matBadgeColor="warn"
+              matBadgeSize="medium"
+            >
+              {{ item.key }}
+            </strong>
+          </mat-list-item>
+          <mat-list-item
+            *ngFor="let todo of item.value"
+            [class.today]="today === item.key"
+            class="todo"
+          >
+            <mat-checkbox
+              (change)="updateTodo(todo)"
+              [(ngModel)]="todo.done"
+              class="todo-checkbox"
+              color="primary"
+            ></mat-checkbox>
+            <span
+              (click)="viewTodo(todo)"
+              class="todo-title"
+            >
+              {{ todo.title }}
+            </span>
+            <i
+              *ngIf="!!todo.date"
+              class="material-icons todo-icon todo-icon-date"
+            >
+              calendar_today
+            </i>
+            <i
+              *ngIf="!!todo.place"
+              class="material-icons todo-icon todo-icon-place"
+            >
+              place
+            </i>
+            <button
+              (click)="editTodo(todo)"
+              class="todo-button todo-button-edit"
+              color="primary"
+              mat-mini-fab
+            >
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              (click)="deleteTodo(todo)"
+              class="todo-button todo-button-delete"
+              color="warn"
+              mat-mini-fab
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+      <ng-template #noTodos>
+        <div class="text-center">
+          <div class="mat-heading-2">You have no todos.</div>
+          <button (click)="editTodo()" class="todo-add" color="primary" mat-raised-button>
+            <i class="material-icons">add</i> Create you first todo
+          </button>
+        </div>
+      </ng-template>
+    </div>
+    <ng-template #loadingTodos>
+      <app-progress-spinner></app-progress-spinner>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
+
+

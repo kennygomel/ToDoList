@@ -1,0 +1,55 @@
+<div class="dialog-wrapper">
+  <h1 mat-dialog-title>{{ todo ? 'Edit' : 'Add' }} todo{{ todo ? ' "' + todo.title + '"' : ''}}</h1>
+  <form (ngSubmit)="saveTodo()" [formGroup]="todoForm">
+    <div mat-dialog-content>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput placeholder="Enter the title">
+          <mat-error
+            *ngIf="todoForm.controls.title.invalid && (todoForm.controls.title.dirty || todoForm.controls.title.touched)"
+          >
+            <span *ngIf="todoForm.controls.title.errors.required; else titleLengthValidation">Title is required.</span>
+            <ng-template #titleLengthValidation>
+              <span>Title must be between 4 and 100 characters.</span>
+            </ng-template>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input
+            [matDatepicker]="datepicker"
+            [min]="now"
+            formControlName="date"
+            matInput
+            placeholder="Date"
+          >
+          <mat-datepicker-toggle [for]="datepicker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-slide-toggle
+          color="accent"
+          formControlName="done"
+          matInput>
+          Done
+        </mat-slide-toggle>
+      </div>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Description</mat-label>
+          <textarea formControlName="description" matInput placeholder="Enter the description"></textarea>
+          <mat-error *ngIf="todoForm.controls.description.invalid">
+            <span>Description must be no longer than 500 characters.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-dialog-close mat-raised-button>Cancel</button>
+      <button color="primary" mat-raised-button type="submit">Save</button>
+    </div>
+  </form>
+</div>

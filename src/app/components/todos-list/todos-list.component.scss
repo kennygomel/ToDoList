@@ -1,0 +1,88 @@
+.mat-card-header {
+  display: block;
+  margin-bottom: 32px;
+  text-align: center;
+
+  .mat-card-title {
+    margin: 8px 0;
+  }
+
+  .mat-button-toggle-group {
+    margin-top: 8px;
+  }
+}
+
+.todos-card {
+  margin: 32px auto;
+  width: 640px;
+  max-width: 80vw;
+
+  .todo {
+    transition: .2s ease-in-out;
+
+    &:hover {
+      background: #fcfcfc;
+    }
+
+    &.today {
+      background: #ffffee;
+
+      &:hover {
+        background: #ffffcc;
+      }
+    }
+
+    &-date {
+      .mat-badge-content {
+        top: -3px;
+        right: -56px;
+        padding: 0 4px;
+        width: 48px;
+        border-radius: 11px;
+      }
+
+      &.today {
+        background: #ffffee;
+      }
+    }
+
+    &-add {
+      margin: 20px 0;
+    }
+
+    &-checkbox {
+      margin-right: 10px;
+    }
+
+    &-title {
+      width: 100%;
+      cursor: pointer;
+    }
+
+    &-icon {
+      padding: 2px 8px 0;
+      color: #aaa;
+    }
+
+    &-button {
+      margin-left: 8px;
+      transition: .2s ease-in-out;
+
+      &:not(:hover) {
+        background: transparent;
+        color: #555;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .todos-card {
+    .todo {
+      &-button {
+        display: none;
+      }
+    }
+  }
+}
